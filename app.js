@@ -9,7 +9,6 @@ const cors = require('koa2-cors')
 
 const index = require('./routes/index')
 const emrms = require('./routes/emrms')
-const consult = require('./routes/consult')
 const dictionary = require('./routes/dictionary')
 // error handler
 onerror(app)
@@ -41,7 +40,6 @@ app.use(async (ctx, next) => {
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(emrms.routes(), emrms.allowedMethods())
-app.use(consult.routes(), consult.allowedMethods())
 app.use(dictionary.routes(), dictionary.allowedMethods())
 
 // error-handling

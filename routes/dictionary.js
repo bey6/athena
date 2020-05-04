@@ -5,7 +5,7 @@ const BaseResponse = require('../classes/base-response')
 router.prefix('/dictionary')
 
 // 获取科室部门
-router.get('/departments', async (ctx) => {
+router.get('/department', async (ctx) => {
   let res = new BaseResponse(),
     url = encodeURI(
       'http://xhdev.docimaxvip.com:6617/api/values/GetValue?dicColumn=入院科别'
@@ -34,7 +34,7 @@ router.get('/departments', async (ctx) => {
 })
 
 // 获取用户
-router.get('/users', async (ctx) => {
+router.get('/user', async (ctx) => {
   let res = new BaseResponse(),
     url = encodeURI(
       'http://xhdev.docimaxvip.com:6617/api/values/GetValue?dicColumn=术者'
