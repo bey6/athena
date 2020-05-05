@@ -111,4 +111,30 @@ router.get('/topicConditions', async (ctx) => {
   ctx.body = res
 })
 
+// 获取编目项
+router.get('/category', async (ctx) => {
+  let res = new BaseResponse(),
+    type = ctx.query.type
+
+  try {
+    const json = await (
+      await fetch(
+        `http://172.30.199.154:8087/api/Consult/ErmMenu?catalogueType=${type}`
+      )
+    ).json()
+    res.code = json.Code
+    res.msg = json.Msg
+    res.data.total = json.ResponseContent.length
+    res.data.list = json.ResponseContent.map((c, idx) => ({
+      id: idx,
+      label: c.categoryName,
+      value: c.categoryId,
+    }))
+  } catch (error) {
+    res.code = error.code || 500
+    res.msg = error.message
+  }
+  ctx.body = res
+})
+
 module.exports = router
