@@ -10,6 +10,7 @@ const cors = require('koa2-cors')
 const index = require('./routes/index')
 const emrms = require('./routes/emrms')
 const dictionary = require('./routes/dictionary')
+const mock = require('./routes/mock')
 // error handler
 onerror(app)
 
@@ -41,6 +42,7 @@ app.use(async (ctx, next) => {
 app.use(index.routes(), index.allowedMethods())
 app.use(emrms.routes(), emrms.allowedMethods())
 app.use(dictionary.routes(), dictionary.allowedMethods())
+app.use(mock.routes(), mock.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
