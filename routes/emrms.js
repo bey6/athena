@@ -211,4 +211,6 @@ router.get('/applyDetail', async (ctx) => {
   ctx.body = res
 })
 
+router.get('/')
+
 module.exports = router

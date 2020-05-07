@@ -3,39 +3,45 @@ extends ../layout
 block content
     h1 自定义 Mock API
 
-    fieldset
-        legend API 描述
-        .flex
-            div(class='flex-2 flex')
-                label(for='apiName') 用途：
-                input(type='text' id='apiName' name='apiName')
-            div(class='flex-2 flex')
-                label(for='apiName') 描述：
-                input(type='text' id='apiName' name='apiName')
+    h3 API 描述
+    .flex
+        div(class='flex-2 flex')
+            label(for='apiName') 用途: 
+            input(class='flex-1' type='text' id='apiName' name='apiName')
+        div(class='flex-2 flex')
+            label(for='apiName') HTTP METHOD: 
+            select(class='flex-1' id='method')
+                option(value='1') GET
+                option(value='2') POST
+    .flex
+        div(class='flex-2 flex')
+            label(for='apiName') PATH: 
+            input(class='flex-1' type='text' id='apiName' name='apiName')
+        div(class='flex-2 flex')
+            label(for='apiName') 错误率: 
+            input(class='flex-1' type='number' id='apiName' name='apiName' max='1' min='0' step='0.1' value='0.2')
 
-    fieldset
-        legend 参数设置
-        .flex
-            div(class='flex-2 flex')
-                label(for='name') 字段名称：
-                input(type='text' id='name' name='name')
-            div(class='flex-2 flex')
-                label(for='type') 字段类型：
-                select(id='type')
-                    option(value='1') 字符串
-                    option(value='2') 数字
+    h3 参数设置 
+    .flex
+        div(class='flex-2 flex')
+            label(for='name') 字段名称：
+            input(class='flex-1' type='text' id='name' name='name')
+        div(class='flex-2 flex')
+            label(for='type') 字段类型：
+            select(class='flex-1' id='type')
+                option(value='1') 字符串
+                option(value='2') 数字
 
-    fieldset
-        legend 字段设置
-        .flex
-            div(class='flex-2 flex')
-                label(for='name') 字段名称：
-                input(type='text' id='name' name='name')
-            div(class='flex-2 flex')
-                label(for='type') 字段类型：
-                select(id='type')
-                    option(value='1') 字符串
-                    option(value='2') 数字
+    h3 字段设置
+    .flex
+        div(class='flex-2 flex')
+            label(for='name') 字段名称：
+            input(class='flex-1' type='text' id='name' name='name')
+        div(class='flex-2 flex')
+            label(for='type') 字段类型：
+            select(class='flex-1' id='type')
+                option(value='1') 字符串
+                option(value='2') 数字
 
     button 👁️ 预 览
     button(type='submit') 🚀 提 交
