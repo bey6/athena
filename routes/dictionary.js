@@ -1,6 +1,6 @@
 const router = require('koa-router')()
 const fetch = require('node-fetch')
-const BaseResponse = require('../classes/base-response')
+const BaseResponse = require('../classes/BaseResponse')
 
 router.prefix('/dictionary')
 

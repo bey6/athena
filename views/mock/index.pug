@@ -1,4 +1,41 @@
 extends ../layout
 
 block content
-    h1 #{msg}
+    h1 自定义 Mock API
+
+    fieldset
+        legend API 描述
+        .flex
+            div(class='flex-2 flex')
+                label(for='apiName') 用途：
+                input(type='text' id='apiName' name='apiName')
+            div(class='flex-2 flex')
+                label(for='apiName') 描述：
+                input(type='text' id='apiName' name='apiName')
+
+    fieldset
+        legend 参数设置
+        .flex
+            div(class='flex-2 flex')
+                label(for='name') 字段名称：
+                input(type='text' id='name' name='name')
+            div(class='flex-2 flex')
+                label(for='type') 字段类型：
+                select(id='type')
+                    option(value='1') 字符串
+                    option(value='2') 数字
+
+    fieldset
+        legend 字段设置
+        .flex
+            div(class='flex-2 flex')
+                label(for='name') 字段名称：
+                input(type='text' id='name' name='name')
+            div(class='flex-2 flex')
+                label(for='type') 字段类型：
+                select(id='type')
+                    option(value='1') 字符串
+                    option(value='2') 数字
+
+    button 👁️ 预 览
+    button(type='submit') 🚀 提 交
