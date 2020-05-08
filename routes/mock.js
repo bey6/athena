@@ -1,5 +1,6 @@
 const router = require('koa-router')()
 const Mock = require('mockjs')
+const fs = require('fs')
 
 router.prefix('/mock')
 
@@ -7,6 +8,23 @@ router.get('/', async (ctx) => {
   await ctx.render('mock/index', {
     msg: 'mock page',
   })
+})
+
+router.post('/api', async (ctx) => {
+  if (ctx.request.body.api_path && ctx.request.body.method) {
+    let current = fs.readFileSync('public/apis.json', 'utf8'),
+      file = JSON.parse(current)
+
+    file.apis.push({
+      name: ctx.request.body.api_path,
+      method: ctx.request.body.method,
+    })
+    let apis_string = JSON.stringify(file)
+    let buffer = Buffer.from(apis_string)
+    fs.writeFileSync('public/apis.json', buffer)
+  }
+
+  ctx.body = 'save success!'
 })
 
 router.get('/getCaseNo', async (ctx) => {

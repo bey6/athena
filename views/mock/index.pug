@@ -3,45 +3,46 @@ extends ../layout
 block content
     h1 自定义 Mock API
 
-    h3 API 描述
-    .flex
-        div(class='flex-2 flex')
-            label(for='apiName') 用途: 
-            input(class='flex-1' type='text' id='apiName' name='apiName')
-        div(class='flex-2 flex')
-            label(for='apiName') HTTP METHOD: 
-            select(class='flex-1' id='method')
-                option(value='1') GET
-                option(value='2') POST
-    .flex
-        div(class='flex-2 flex')
-            label(for='apiName') PATH: 
-            input(class='flex-1' type='text' id='apiName' name='apiName')
-        div(class='flex-2 flex')
-            label(for='apiName') 错误率: 
-            input(class='flex-1' type='number' id='apiName' name='apiName' max='1' min='0' step='0.1' value='0.2')
+    form(action="/mock/api", method="post")
+        h3 API 描述
+        .flex
+            div(class='flex-2 flex')
+                label(for='api_name') 用途: 
+                input(class='flex-1' type='text' id='api_name' name='api_name')
+            div(class='flex-2 flex')
+                label(for='method') HTTP METHOD: 
+                select(class='flex-1' id='method' name='method')
+                    option(value='get') GET
+                    option(value='post') POST
+        .flex
+            div(class='flex-2 flex')
+                label(for='api_path') PATH: 
+                input(class='flex-1' type='text' id='api_path' name='api_path')
+            div(class='flex-2 flex')
+                label(for='error_rate') 错误率: 
+                input(class='flex-1' type='number' id='error_rate' name='error_rate' max='1' min='0' step='0.1' value='0.2')
 
-    h3 参数设置 
-    .flex
-        div(class='flex-2 flex')
-            label(for='name') 字段名称：
-            input(class='flex-1' type='text' id='name' name='name')
-        div(class='flex-2 flex')
-            label(for='type') 字段类型：
-            select(class='flex-1' id='type')
-                option(value='1') 字符串
-                option(value='2') 数字
+        h3 参数设置 
+        .flex
+            div(class='flex-2 flex')
+                label(for='name') 字段名称：
+                input(class='flex-1' type='text' id='name' name='name')
+            div(class='flex-2 flex')
+                label(for='type') 字段类型：
+                select(class='flex-1' id='type')
+                    option(value='1') 字符串
+                    option(value='2') 数字
 
-    h3 字段设置
-    .flex
-        div(class='flex-2 flex')
-            label(for='name') 字段名称：
-            input(class='flex-1' type='text' id='name' name='name')
-        div(class='flex-2 flex')
-            label(for='type') 字段类型：
-            select(class='flex-1' id='type')
-                option(value='1') 字符串
-                option(value='2') 数字
+        h3 字段设置
+        .flex
+            div(class='flex-2 flex')
+                label(for='name') 字段名称：
+                input(class='flex-1' type='text' id='name' name='name')
+            div(class='flex-2 flex')
+                label(for='type') 字段类型：
+                select(class='flex-1' id='type')
+                    option(value='1') 字符串
+                    option(value='2') 数字
 
-    button 👁️ 预 览
-    button(type='submit') 🚀 提 交
+        button 👁️ 预 览
+        button(type='submit') 🚀 提 交

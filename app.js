@@ -11,6 +11,8 @@ const index = require('./routes/index')
 const emrms = require('./routes/emrms')
 const dictionary = require('./routes/dictionary')
 const mock = require('./routes/mock')
+const dynamic = require('./routes/dynamic')
+
 // error handler
 onerror(app)
 
@@ -43,6 +45,7 @@ app.use(index.routes(), index.allowedMethods())
 app.use(emrms.routes(), emrms.allowedMethods())
 app.use(dictionary.routes(), dictionary.allowedMethods())
 app.use(mock.routes(), mock.allowedMethods())
+app.use(dynamic.routes(), dynamic.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
