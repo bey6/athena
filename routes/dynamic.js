@@ -2,7 +2,7 @@ const router = require('koa-router')()
 const path = require('path')
 const fs = require('fs')
 
-const file = fs.readFileSync('public/apis.json', 'utf8'),
+const file = fs.readFileSync('stores/apis.json', 'utf8'),
   { apis } = JSON.parse(file)
 
 apis.forEach((api) => {

@@ -211,6 +211,42 @@ router.get('/applyDetail', async (ctx) => {
   ctx.body = res
 })
 
-router.get('/')
+router.get('/GetApprovalList', async (ctx) => {
+  let res = Mock.mock({
+    Code: '00000',
+    Msg: '',
+    ResponseContent: {
+      total: '0',
+      'data|10-100': [
+        {
+          id: () => Mock.mock('@id'),
+          applyNo: /\d{7}/,
+          applicant: () => Mock.mock('@cname'),
+          'applyDepartment|1': [
+            '妇产科',
+            '骨科',
+            '内科',
+            '放射科',
+            '男科',
+            '外科',
+            '化验科',
+          ],
+          'applyReason|1': ['文玩', '机场姐妹花', '明言明语', '艾米西娅6'],
+          applyTime: () => Mock.mock("@date('yyyy-MM-dd HH:mm:ss')"),
+          approver: () => Mock.mock('@cname'),
+          'approveStatus|1': ['待审核', '审核拒绝', '审核通过'],
+          approveTime: () => Mock.mock("@date('yyyy-MM-dd HH:mm:ss')"),
+          'approveSuggestion|1': [
+            '时间太久了，应该适当的缩短一点查阅时间',
+            '这个等级的病案需要上级领导的批准才可以查看',
+            '该病案丢失了😡...无法查阅！',
+          ],
+        },
+      ],
+    },
+  })
+  res.ResponseContent.total = res.ResponseContent.data.length
+  ctx.body = res
+})
 
 module.exports = router

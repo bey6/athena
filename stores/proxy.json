@@ -1,0 +1,31 @@
+{
+  "proxy": [
+    {
+      "id": "0",
+      "origin": "http://xhdev.docimaxvip.com:6607",
+      "delegate": "config",
+      "methodsMapping": [
+        {
+          "id": "0",
+          "origin": "GetApiList",
+          "delegate": "InitParams",
+          "description": "初始化参数"
+        },
+        {
+          "id": "1",
+          "origin": "GetValue",
+          "delegate": "InitParams",
+          "description": "初始化参数"
+        }
+      ],
+      "description": "配置服务"
+    },
+    {
+      "id": "1",
+      "origin": "http://xhdev.docimaxvip.com:6617",
+      "delegate": "config",
+      "methodsMapping": [""],
+      "description": "首页查询后端-dotnet core"
+    }
+  ]
+}
