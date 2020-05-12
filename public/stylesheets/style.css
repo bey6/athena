@@ -1,8 +1,25 @@
 body {
   margin: 0;
   padding: 0;
+  color: #2c2c2c;
   font: 500 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
   text-align: center;
+}
+
+input[type='text'] {
+  padding: 0 8px;
+  line-height: 30px;
+  border-radius: 5px;
+  border: 1px solid #999;
+}
+
+.row {
+  width: 100%;
+}
+
+.col-3 {
+  display: inline-block;
+  width: 25%;
 }
 
 .explanation {

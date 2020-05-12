@@ -4,25 +4,34 @@ block content
     h1 CREATE A NEW RELEASE
 
     form(action="/gitlab/release", method="post")
-        label(for="id") PROJECT ID: 
-        input(type="text", name="id")
+        .row
+            .col-3
+                label(for="id") PROJECT ID: 
+                input(type="text", id="id", name="id", autocomplete="off", required="true")
+            .col-3
+                label(for="name") RELEASE NAME: 
+                input(type="text", id="name", name="name", autocomplete="off", required="true")
+            .col-3
+                label(for="tag_name") TAG NAME: 
+                input(type="text", id="tag_name", name="tag_name", autocomplete="off", required="true")
 
-        label(for="name") RELEASE NAME: 
-        input(type="text", name="name")
+        .row
+            .col-3
+                label(for="description") DESCRIPTION: 
+                input(type="text", id="description", name="description", autocomplete="off")
+            .col-3
+                label(for="milestones") MILESTONES: 
+                input(type="text", id="milestones", name="milestones", autocomplete="off", required="true")
+            .col-3
+                label(for="assets_name") ASSETS NAME: 
+                input(type="text", id="assets_name", name="assets_name", autocomplete="off")
 
-        label(for="tag_name") TAG NAME: 
-        input(type="text", name="tag_name")
+        .row
+            .col-3
+                label(for="assets_links") ASSETS LINKS: 
+                input(type="text", id="assets_links", name="assets_links", autocomplete="off")
 
-        label(for="description") DESCRIPTION: 
-        input(type="text", name="description")
-
-        label(for="milestones") MILESTONES: 
-        input(type="text", name="milestones")
-
-        label(for="assets_name") ASSETS NAME: 
-        input(type="text", name="assets_name")
-
-        label(for="assets_links") ASSETS LINKS: 
-        input(type="text", name="assets_links")
-
+        br
         button(id="submit") CREATE RELEASE! 🚀
+
+    script(src="javascript/gitlab.js")

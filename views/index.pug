@@ -3,29 +3,44 @@ extends layout
 block content
   h1 #{title}
   p 🚀 version: #{version}
-  div(class='explanation')
-    img(src='/images/logo.png')
+  div(class="explanation")
+    img(src="/images/logo.png")
     p.
       Athena 是一个偶然的产物，他实际上是以自我为出发点来思考如何改变已有 API 交互较为混乱的现状而诞生的。
       请记住，它的宗旨并不是怂恿你写出更加放飞自我的代码。
+
   div
-    a(href='#mock') MOCK
-    a(href='#proxy') PROXY
-    a(href='#mapping') MAPPING
-    a(href='#dictionary') DICTIONARY
+    p(class="text"). 
+      你当然可以吧 Athena 当做一个代理，任何“历史问题”都可以用它来改造。还是那句话，以自我为出发点来思考我能做些什么？
+
+    p(class="text").
+      一段时间之后，我发现这个网站的功能越来越杂，所以在 5-12 这天，我把站点更名为 Athena，它象征着守护，希望能够输出提供更多的帮助吧。
+
+  div
+    a(href="#mock") MOCK
+    a(href="#proxy") PROXY
+    a(href="#mapping") MAPPING
+    a(href="#dictionary") DICTIONARY
+    a(href="#gitlab") GITLAB
   
-  h2(id='mock') MOCK
-  p(class='text'). 
+  h2(id="mock") MOCK
+  p(class="text"). 
     前后端分离的开发模式最大的一个优点在于平行开发，不仅将关注点做到了很好的分离，同时也提高了开发的整体效率。
     在平行开发的模式中，MOCK 扮演着一个不可或缺的重要角色，可以说没有 MOCK 就无法做到真正的平行开发！
   h3 已经提供的 MOCK API 包括：
   ul
     li 获取鉴定列表
-      a(href='http://localhost:3000/emrms/interpretable' target='view_api') http://localhost:3000/emrms/interpretable
-  a(href='/mock') 在线编辑 mock api
+      a(href="http://localhost:3000/emrms/interpretable" target="view_api") http://localhost:3000/emrms/interpretable
+  a(href="/mock") 在线编辑 mock api
 
-  h2(id='proxy') PROXY
-  p(class='text'). 
+  h2(id="gitlab") GITLAB
+  p(class="text"). 
+    gitlab api 的出现完全是因为某天我想要在 gitlab 上发布一个 release，找了一圈最终只找到了一个 api 文档，所以你也看到了，我写了一个页面，专门用来创建 release...
+  a(href="/gitlab") add an release
+
+
+  h2(id="proxy") PROXY
+  p(class="text"). 
     以微服务为宗旨的今天，众多的站点中间存在这各种各样的依赖关系。
     单说前端站点的 URL 引用就存在很大的问题，一个站点的配置文件可能就会维护至少 4 个服务的地址
     （配置、认证、字典、配套后端）。
@@ -33,30 +48,30 @@ block content
   ul
     li 好吧，还没有呢...😭😭😭
 
-  h2(id='mapping') MAPPING
+  h2(id="mapping") MAPPING
   .flex
-    div(class='flex-2 flex flex-column')
+    div(class="flex-2 flex flex-column")
       h3 返回单个对象
-      p(class='code flex-1') { code: 200, msg: '', data: {} }
-    div(class='flex-2 flex flex-column')
+      p(class="code flex-1") { code: 200, msg: "", data: {} }
+    div(class="flex-2 flex flex-column")
       h3 返回一个数据集
-      p(class='code flex-1') { code: 200, msg: '', data: { total: 30, list: [] } }
+      p(class="code flex-1") { code: 200, msg: "", data: { total: 30, list: [] } }
 
-  h2(id='dictionary') DICTIONARY
-  p(class='text'). 
+  h2(id="dictionary") DICTIONARY
+  p(class="text"). 
     字典的维护也是一个头疼的问题。
     每当我们需要获取一个字典数据的时候都没有一个明确的目标，往往都是让后端在写一个吧...
   h3 已经集成的字典接口包括：
   ul
     li 科室部门
-      a(href='http://localhost:3000/dictionary/department' target='view_api') http://localhost:3000/dictionary/department
+      a(href="http://localhost:3000/dictionary/department" target="view_api") http://localhost:3000/dictionary/department
     li 用户
-      a(href='http://localhost:3000/dictionary/user' target='view_api') http://localhost:3000/dictionary/user
+      a(href="http://localhost:3000/dictionary/user" target="view_api") http://localhost:3000/dictionary/user
     li 获取主题与条件
-      a(href='http://localhost:3000/dictionary/topicConditions' target='view_api') http://localhost:3000/dictionary/topicConditions
+      a(href="http://localhost:3000/dictionary/topicConditions" target="view_api") http://localhost:3000/dictionary/topicConditions
     li 获取编目项
-      a(href='http://localhost:3000/dictionary/category' target='view_api') http://localhost:3000/dictionary/category
+      a(href="http://localhost:3000/dictionary/category" target="view_api") http://localhost:3000/dictionary/category
   
-  div(class='flex footer')
+  div(class="flex footer")
     .flex-1 
-      a(href='https://github.com/bey6/docimax-filter') 项目仓库
+      a(href="https://github.com/bey6/docimax-filter") 项目仓库
