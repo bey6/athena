@@ -1,6 +1,6 @@
-# Filter
+# ATHENA
 
-![filter.png](https://s1.ax1x.com/2020/05/10/Y1vuLj.png)
+![ATHENA.png](https://s1.ax1x.com/2020/05/10/Y1vuLj.png)
 
 ## 安装依赖
 
@@ -29,3 +29,27 @@ yarn dev
 ## 自定义路由
 
 `routes/dynamic.js` 文件中属于动态生成的 API 路由，通过站点中的 `在线编辑 Mock API` 生成。
+
+## gitlab
+
+### CREATE AN RELEASE
+
+An release base on a tag and a milestone, then add a private token to authorized this project access gitlab api.
+
+How to generate a `private token`?
+
+1. In the upper-right corner, click your avatar and select **Settings**.
+2. On the **User Settings** menu, select **Access Tokens**.
+3. Choose a name and optional expiry date for the token.
+4. Choose the desired scopes.
+5. Click the **Create personal access token** button.
+6. Copy it!
+
+How to create a `project tag`?
+
+1. git tag -a tag_name -m "tag_message"
+2. git push origin tag_name
+
+> Delete tag
+>
+> git push origin --delete tag tag_name

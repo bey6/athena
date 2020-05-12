@@ -3,7 +3,7 @@ const pkg = require('../package.json')
 
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
-    title: 'FILTER',
+    title: 'ATHENA',
     version: pkg.version,
   })
 })
