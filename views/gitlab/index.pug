@@ -6,30 +6,30 @@ block content
     form(action="/gitlab/release", method="post")
         .row
             .col-3
-                label(for="id") PROJECT ID: 
-                input(type="text", id="id", name="id", autocomplete="off", required="true")
+                label(for="project_id") Project ID: 
+                input(type="text", id="project_id", name="project_id", autocomplete="off", required="true")
             .col-3
-                label(for="name") RELEASE NAME: 
+                label(for="name") Release Name: 
                 input(type="text", id="name", name="name", autocomplete="off", required="true")
             .col-3
-                label(for="tag_name") TAG NAME: 
+                label(for="tag_name") Tag Name: 
                 input(type="text", id="tag_name", name="tag_name", autocomplete="off", required="true")
 
         .row
             .col-3
-                label(for="description") DESCRIPTION: 
+                label(for="description") Description: 
                 input(type="text", id="description", name="description", autocomplete="off")
             .col-3
-                label(for="milestones") MILESTONES: 
-                input(type="text", id="milestones", name="milestones", autocomplete="off", required="true")
+                label(for="milestone") Milestone: 
+                input(type="text", id="milestone", name="milestone", autocomplete="off", required="true")
             .col-3
-                label(for="assets_name") ASSETS NAME: 
+                label(for="assets_name") Assets Name: 
                 input(type="text", id="assets_name", name="assets_name", autocomplete="off")
 
         .row
             .col-3
-                label(for="assets_links") ASSETS LINKS: 
-                input(type="text", id="assets_links", name="assets_links", autocomplete="off")
+                label(for="assets_link") Assets links: 
+                input(type="text", id="assets_link", name="assets_link", autocomplete="off")
 
         br
         button(id="submit") CREATE RELEASE! 🚀

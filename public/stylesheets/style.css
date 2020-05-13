@@ -13,13 +13,22 @@ input[type='text'] {
   border: 1px solid #999;
 }
 
+input[type='text']:focus {
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
 .row {
   width: 100%;
+  margin-bottom: 12px;
 }
 
 .col-3 {
   display: inline-block;
   width: 25%;
+  min-width: 200px;
 }
 
 .explanation {

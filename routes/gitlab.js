@@ -9,32 +9,72 @@ router.get('/', async (ctx) => {
 
 router.post('/release', async (ctx) => {
   try {
-    const json = await (
-      await fetch('http://git.docimaxvip.com/api/v4/projects/10/releases', {
-        method: 'post',
-        body: JSON.stringify({
-          id: '10',
-          name: 'second release',
-          tag_name: 'v0.1.6',
-          description: `<h1>v0.1.6</h1>
-<h2>update log</h2>
+    if (!ctx.request.body.project_id) {
+      ctx.body = {
+        code: 400,
+        msg: 'project_id is required.',
+      }
+    }
+    if (!ctx.request.body.name) {
+      ctx.body = {
+        code: 400,
+        msg: 'name is required.',
+      }
+    }
+    if (!ctx.request.body.tag_name) {
+      ctx.body = {
+        code: 400,
+        msg: 'tag_name is required.',
+      }
+    }
+    if (!ctx.request.body.milestone) {
+      ctx.body = {
+        code: 400,
+        msg: 'milestone is required.',
+      }
+    }
 
-<li> 统一头部标题栏样式 </li>
-<li> 添加退出登录的功能 </li>`,
-          milestones: ['First Milestone'],
-          assets: {
-            links: [
-              { name: 'home', url: 'http://git.docimaxvip.com/mdpms/portal' },
-            ],
+    if (!ctx.request.body.assets_name) {
+      ctx.body = {
+        code: 400,
+        msg: 'assets name is required.',
+      }
+    }
+
+    if (!ctx.request.body.assets_link) {
+      ctx.body = {
+        code: 400,
+        msg: 'assets link is required.',
+      }
+    }
+
+    const json = await (
+      await fetch(
+        `http://git.docimaxvip.com/api/v4/projects/${ctx.request.body.project_id}/releases`,
+        {
+          method: 'post',
+          body: JSON.stringify({
+            id: ctx.request.body.project_id,
+            name: ctx.request.body.name,
+            tag_name: ctx.request.body.tag_name,
+            description: ctx.request.body.description,
+            milestones: [...ctx.request.body.milestone.split(',')],
+            assets: {
+              links: [
+                {
+                  name: ctx.request.body.assets_name,
+                  url: ctx.request.body.assets_link,
+                },
+              ],
+            },
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+            'PRIVATE-TOKEN': 'jULUa6UdNsXBLwsA65WR',
           },
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-          'PRIVATE-TOKEN': 'jULUa6UdNsXBLwsA65WR',
-        },
-      })
+        }
+      )
     ).json()
-    console.log(json)
     ctx.body = json
   } catch (error) {
     ctx.body = {
