@@ -3,6 +3,32 @@ extends ../layout
 block content
     h1 CREATE A NEW RELEASE
 
+    img(src="https://s1.ax1x.com/2020/05/14/YwxKYT.png", alt="效果预览图", width="700px")
+
+    ul
+        li 
+            p(class="text"). 
+                #[code Project ID(required)] 字段如何获取？
+                打开 gitlab 进入到项目的 home 页，在项目名称的大标题下面附有 Project ID: xxx 这样的字样，取 
+                #[code :] 
+                后面的数字即可
+        li
+            p(class="text"). 
+                #[code Release Name] 字段表示本次 Release 的名称
+        
+        li
+            p(class="text"). 
+                #[code Tag Name] 字段是希望根据哪个 Tag 来进行 Release 操作
+
+        li
+            p(class="text"). 
+                #[code Description] 字段希望描述本次 Release 的改动
+        
+        li
+            p(class="text"). 
+                #[code Milestone] 字段表示本次 Release 希望关联到哪个里程碑当中
+    
+
     form(action="/gitlab/release", method="post")
         .row
             .col-3

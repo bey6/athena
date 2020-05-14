@@ -44,6 +44,14 @@ a {
   color: #1ebe8e;
 }
 
+code {
+  padding: 0 8px;
+  border-radius: 5px;
+  font-family: Consolas;
+  color: #2c2c2c;
+  background-color: rgb(204, 133, 62);
+}
+
 .code {
   margin: 24px;
   padding: 24px;
