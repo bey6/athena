@@ -3,58 +3,37 @@ extends ../layout
 block content
     h1 自定义 Mock API
 
-    form(action="/mock/api", method="post")
+    form(action="/mock/api" method="post")
         h3 API 基本信息描述
-        .flex
+        div(class="flex mgb-3")
             div(class="flex-2 flex")
                 label(for="api_name") 接口名称：
-                input(class="flex-1" type="text" id="api_name" name="api_name")
+                input(class="flex-1" type="text" id="api_name" name="api_name" autocomplete="off" spellcheck="false" required)
             div(class="flex-2 flex")
-                label(for="method") HTTP METHOD：
-                select(class="flex-1" id="method" name="method")
+                label(for="api_method") HTTP METHOD：
+                select(class="flex-1" id="method" name="api_method")
                     option(value="get") GET
                     option(value="post") POST
+
         .flex
             div(class="flex-2 flex")
                 label(for="api_path") PATH：
-                input(class="flex-1" type="text" id="api_path" name="api_path")
+                input(class="flex-1" type="text" id="api_path" name="api_path" placeholder="/api"
+                      autocomplete="off" spellcheck="false" required)
             div(class="flex-2 flex")
                 label(for="error_rate") 错误率：
-                input(class="flex-1" type="number" id="error_rate" name="error_rate" max="1" min="0" step="0.1" value="0.2")
-
-        //- h3 参数设置 
-        //- .flex
-        //-     div(class="flex-2 flex")
-        //-         label(for="name") 字段名称：
-        //-         input(class="flex-1" type="text" id="name" name="name")
-        //-     div(class="flex-2 flex")
-        //-         label(for="type") 字段类型：
-        //-         select(class="flex-1" id="type")
-        //-             option(value="1") 字符串
-        //-             option(value="2") 数字
-
+                input(class="flex-1" type="number" id="error_rate" name="error_rate" autocomplete="off" spellcheck="false" max="1" min="0" step="0.1" value="0.2")
+        hr(class="mgtb-3")
         h3 返回字段设置
         .params-panel
             .res-params
                 div(class="text-align-center") 操作
+                div(class="text-align-center") 列表项
                 div(class="flex-3 text-align--center") 名称
                 div(class="flex-3 text-align--center") 类型
                 div(class="flex-3 text-align--center") 取值
 
-            .res-params
-                div(class="text-align-center")
-                    button +
-                    button -
-                div(class="flex flex-3 text-align--center")
-                    input(class="flex-1" type="text" id="name" name="name")
-                div(class="flex flex-3 text-align--center")
-                    select(class="flex-1" id="type")
-                        option(value="1") 字符串
-                        option(value="2") 数字
-                div(class="flex flex-3 text-align--center")
-                    input(class="flex-1", type="text", name="values_range")
-
-        //- button(id="preview") 👁️ 预 览
-        button(id="submit" type="submit") 🚀 提 交
+        button(class="mgr-3" onclick="handleAdd(this);return false;") 🌈 添加一个返回字段
+        button(class="mgb-3") 🚀 提 交
 
     script(src="javascript/mock.js")

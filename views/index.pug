@@ -1,10 +1,10 @@
 extends layout
 
 block content
-  h1 #{title}
-  p 🚀 version: #{version}
-  div(class="explanation")
-    img(src="/images/logo.png")
+  div(class="explanation pdt-3")
+    h1 #{title}
+    p 🚀 version: #{version}
+    img(src="/images/logo.png" class="logo")
     p.
       Athena 是一个偶然的产物，他实际上是以自我为出发点来思考如何改变已有 API 交互较为混乱的现状而诞生的。
       请记住，它的宗旨并不是怂恿你写出更加放飞自我的代码。
@@ -31,7 +31,8 @@ block content
   ul
     li 获取鉴定列表
       a(href="http://localhost:3000/emrms/interpretable" target="view_api") http://localhost:3000/emrms/interpretable
-  a(href="/mock") 在线编辑 mock api
+  a(href="/mock") ADD A MOCK API
+  a(href="/mock/api") MOCK API LIST
 
   h2(id="gitlab") GITLAB
   p(class="text"). 

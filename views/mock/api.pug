@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+    h1 Already exists APIs
+    ul
+        each api in apis
+            li
+                a(href=api.path) #{api.name} #{api.path} [#{api.method}]

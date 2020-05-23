@@ -27,7 +27,6 @@ block content
         li
             p(class="text"). 
                 #[code Milestone] 字段表示本次 Release 希望关联到哪个里程碑当中
-    
 
     form(action="/gitlab/release", method="post")
         .row
@@ -58,6 +57,6 @@ block content
                 input(type="text", id="assets_link", name="assets_link", autocomplete="off")
 
         br
-        button(id="submit") CREATE RELEASE! 🚀
+        button(id="submit" class="mgb-3") 🚀 CREATE RELEASE!
 
     script(src="javascript/gitlab.js")

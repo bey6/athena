@@ -10,21 +10,60 @@ router.get('/', async (ctx) => {
   })
 })
 
+router.get('/api', async (ctx) => {
+  const file = fs.readFileSync('stores/apis.json', 'utf8'),
+    { apis } = JSON.parse(file)
+  await ctx.render('mock/api', {
+    apis: apis,
+  })
+})
+
 router.post('/api', async (ctx) => {
-  if (ctx.request.body.api_path && ctx.request.body.method) {
-    let current = fs.readFileSync('public/apis.json', 'utf8'),
+  // console.log(ctx.request.body)
+
+  if (
+    ctx.request.body.api_path &&
+    ctx.request.body.api_method &&
+    ctx.request.body.api_name
+  ) {
+    let current = fs.readFileSync('stores/apis.json', 'utf8'),
       file = JSON.parse(current)
 
-    file.apis.push({
-      name: ctx.request.body.api_path,
-      method: ctx.request.body.method,
+    if (file.apis.find((api) => api.path === ctx.request.body.api_path)) {
+      ctx.body = {
+        code: 201,
+        msg: `🤷 The api with path: '${ctx.request.body.api_path}' is already exist.`,
+      }
+      return
+    }
+
+    let res = []
+
+    ctx.request.body.fields_name.forEach((fields, idx) => {
+      res.push({
+        fields_name: fields,
+        fields_type: ctx.request.body.fields_type[idx],
+        fields_range: ctx.request.body.fields_range[idx].trim(),
+      })
     })
+
+    file.apis.push({
+      name: ctx.request.body.api_name,
+      path: ctx.request.body.api_path,
+      method: ctx.request.body.api_method,
+      response: res,
+    })
+
     let apis_string = JSON.stringify(file)
     let buffer = Buffer.from(apis_string)
-    fs.writeFileSync('public/apis.json', buffer)
+    fs.writeFileSync('stores/apis.json', buffer)
+    ctx.redirect('/mock/api')
+  } else {
+    ctx.body = {
+      code: 400,
+      msg: '🤷 The path and name is required.',
+    }
   }
-
-  ctx.body = 'save success!'
 })
 
 router.get('/getCaseNo', async (ctx) => {

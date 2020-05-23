@@ -1,19 +1,31 @@
-body {
+* {
   margin: 0;
   padding: 0;
+}
+body {
   color: #2c2c2c;
   font: 500 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
   text-align: center;
 }
 
-input[type='text'] {
+button {
+  padding: 4px 8px;
+}
+
+input,
+select {
   padding: 0 8px;
   line-height: 30px;
   border-radius: 5px;
   border: 1px solid #999;
 }
 
-input[type='text']:focus {
+option {
+  font-size: 16px;
+}
+
+input:focus,
+select:focus {
   background-color: #fff;
   border-color: #80bdff;
   outline: 0;
@@ -32,7 +44,7 @@ input[type='text']:focus {
 }
 
 .explanation {
-  margin: 24px 0;
+  margin: 0 0 24px 0;
   padding: 24px 12px;
   background-color: #333;
   color: #fff;
@@ -69,26 +81,6 @@ code {
   background-color: #f1f1f1;
 }
 
-.flex {
-  display: flex;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
-.flex-1 {
-  flex: 1;
-}
-
-.flex-2 {
-  flex: 2;
-}
-
-.flex-3 {
-  flex: 3;
-}
-
 .text-align--center {
   text-align: center;
 }
@@ -115,4 +107,8 @@ ul {
 
 .res-params div button:first-child {
   margin-right: 8px;
+}
+
+.logo {
+  border-radius: 15px;
 }
