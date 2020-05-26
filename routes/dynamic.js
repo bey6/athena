@@ -1,8 +1,6 @@
 const router = require('koa-router')()
 const Mock = require('mockjs')
-const path = require('path')
 const fs = require('fs')
-const { resolveCname } = require('dns')
 
 const file = fs.readFileSync('stores/apis.json', 'utf8'),
   { apis } = JSON.parse(file)
