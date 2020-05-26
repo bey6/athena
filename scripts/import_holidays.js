@@ -18,7 +18,8 @@ function boxPayload(holiday = []) {
   return resList
 }
 
-// To send the httprequest for all holidays
+// To send the httprequest for all holidays.
+// It returen a promise, so you can use await to receive it.
 async function sendRequest(url, payload) {
   url = encodeURI(url)
   return (
@@ -33,13 +34,13 @@ async function sendRequest(url, payload) {
 // Split the request into multiple times.
 // To pass a parameter can modify count per times pass.
 // The default count per times is 20 items.
-async function loopRequest(countPerTime = 20) {
+async function loopRequest(ipport, countPerTime = 20) {
   let payload = boxPayload(holiday),
     times = Math.ceil(payload.length / countPerTime),
     res
   for (let i = 0; i < times; i++) {
     res = await sendRequest(
-      'http://xhdev.docimaxvip.com:6627/api/values/PostAddHoliday',
+      `http://${ipport}/api/values/PostAddHoliday`,
       payload.slice(i * countPerTime, (i + 1) * countPerTime)
     )
     console.log(
@@ -51,5 +52,6 @@ async function loopRequest(countPerTime = 20) {
   }
 }
 
+// 把传入的 url 修改为协和部署的 示踪后端服务器 url 即可
 // 🌈 Run
-loopRequest()
+loopRequest('xhdev.docimaxvip.com:6627')
