@@ -1,4 +1,4 @@
-const fetch = require('node-fetch')
+const { sendRequest } = require('./requestAPI')
 const fs = require('fs')
 
 // Get the holiday list we prepared.
@@ -16,19 +16,6 @@ function boxPayload(holiday = []) {
     })
   })
   return resList
-}
-
-// To send the httprequest for all holidays.
-// It returen a promise, so you can use await to receive it.
-async function sendRequest(url, payload) {
-  url = encodeURI(url)
-  return (
-    await fetch(url, {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    })
-  ).json()
 }
 
 // Split the request into multiple times.
