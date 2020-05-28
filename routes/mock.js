@@ -4,23 +4,26 @@ const fs = require('fs')
 
 router.prefix('/mock')
 
+// render the mock index.html page.
 router.get('/', async (ctx) => {
   await ctx.render('mock/index', {
     msg: 'mock page',
   })
 })
 
-router.get('/api', async (ctx) => {
+// render the generated mock api list.
+// click the label <a> to check the response of the api.
+router.get('/apis', async (ctx) => {
   const file = fs.readFileSync('stores/apis.json', 'utf8'),
     { apis } = JSON.parse(file)
-  await ctx.render('mock/api', {
+  await ctx.render('mock/apis', {
     apis: apis,
   })
 })
 
+// generate a new api
+// if the api path is existing, return code 201: ...already exist.
 router.post('/api', async (ctx) => {
-  // console.log(ctx.request.body)
-
   if (
     ctx.request.body.api_path &&
     ctx.request.body.api_method &&
@@ -66,6 +69,8 @@ router.post('/api', async (ctx) => {
   }
 })
 
+// get the case number, for Liangliang Liu
+// not sure if it is using now.
 router.get('/getCaseNo', async (ctx) => {
   let year = Mock.mock("@date('yyyy')"),
     caseNum = Mock.mock(/\d{4}/),
