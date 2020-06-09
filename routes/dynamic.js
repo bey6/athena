@@ -8,44 +8,45 @@ const file = fs.readFileSync('stores/apis.json', 'utf8'),
 apis.forEach((api) => {
   router[api.method](`${api.path}`, async (ctx) => {
     let res = {},
-      data = {}
+      list = {}
+
     api.response.forEach((fields) => {
       switch (fields.fields_type) {
         case 'id':
-          data[fields.fields_name] = () => Mock.mock('@id')
+          list[fields.fields_name] = () => Mock.mock('@id')
 
         case 'name':
-          data[fields.fields_name] = () => Mock.mock('@cname')
+          list[fields.fields_name] = () => Mock.mock('@cname')
           break
 
         case 'gender':
-          data[`${fields.fields_name}|1`] = ['男', '女']
+          list[`${fields.fields_name}|1`] = ['男', '女']
           break
 
         case 'address':
-          data[fields.fields_name] = () => Mock.mock('@county(true)')
+          list[fields.fields_name] = () => Mock.mock('@county(true)')
           break
 
         case 'date':
-          data[fields.fields_name] = () => Mock.mock('@date')
+          list[fields.fields_name] = () => Mock.mock('@date')
           break
 
         case 'datetime':
-          data[fields.fields_name] = () => Mock.mock('@datetime')
+          list[fields.fields_name] = () => Mock.mock('@datetime')
           break
 
         case 'number':
-          data[fields.fields_name] = () => Mock.mock(/\d{5}/)
+          list[fields.fields_name] = () => Mock.mock(/\d{5}/)
           break
 
         case 'dictionary':
-          data[`${fields.fields_name}|1`] = fields.fields_range
+          list[`${fields.fields_name}|1`] = fields.fields_range
             ? fields.fields_range.split(',')
             : []
           break
 
         default:
-          data[fields.fields_name] = fields.fields_range || 'no value'
+          list[fields.fields_name] = fields.fields_range || 'no value'
           break
       }
     })
@@ -55,7 +56,7 @@ apis.forEach((api) => {
       msg: `🦄 Generate by athena mock api.`,
       data: {
         total: 0,
-        'list|10-200': [data],
+        'list|10-200': [list],
       },
     })
     ctx.body = res
