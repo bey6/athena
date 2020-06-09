@@ -42,6 +42,9 @@ router.post('/api', async (ctx) => {
 
     let res = []
 
+    // Each fields_name corresponds to a fields_type and a fields_range
+    // If the count of fields_name & fields_type & fields_range are not same, it will be error here.
+    // There should give a `fields_layer`🤔 to confirm which layer the variable belong to.
     ctx.request.body.fields_name.forEach((fields, idx) => {
       res.push({
         fields_name: fields,
