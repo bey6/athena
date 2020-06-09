@@ -2,9 +2,14 @@ const router = require('koa-router')()
 const pkg = require('../package.json')
 
 router.get('/', async (ctx, next) => {
+  let url = 'http://localhost:6677'
+  if (process.env.NODE_ENV === 'production') {
+    url = 'http://xhdev.docimaxvip.com:6677'
+  }
   await ctx.render('index', {
     title: 'ATHENA',
     version: pkg.version,
+    url,
   })
 })
 
