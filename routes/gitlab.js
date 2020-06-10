@@ -70,7 +70,7 @@ router.post('/release', async (ctx) => {
           }),
           headers: {
             'Content-Type': 'application/json',
-            'PRIVATE-TOKEN': 'jULUa6UdNsXBLwsA65WR',
+            'PRIVATE-TOKEN': 'RBwpHjjeGA-EcWmAadxg',
           },
         }
       )
