@@ -41,9 +41,13 @@ function handleAdd(e) {
       <option value="name">姓名</option>
       <option value="gender">性别</option>
       <option value="address">地址</option>
+      <option value="nation">民族</option>
       <option value="date">日期</option>
       <option value="datetime">日期时间</option>
       <option value="number">数字</option>
+      <option value="float">小数</option>
+      <option value="colorhex">颜色hex</option>
+      <option value="colorrgb">颜色rgb</option>
       <option value="dictionary">字典</option>
     </select>
   </div>

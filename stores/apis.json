@@ -1,1 +1,142 @@
-{"apis":[{"name":"ssss","path":"/nfdksanfdj","method":"get","response":[{"fields_name":"id","fields_type":"1","fields_range":"1"},{"fields_name":"name","fields_type":"1","fields_range":"2"},{"fields_name":"gender","fields_type":"1","fields_range":"男,女"}]},{"name":"asdf","path":"/api","method":"get","response":[{"fields_name":"a","fields_type":"2","fields_range":" "},{"fields_name":"dfsdf","fields_type":"1","fields_range":" "},{"fields_name":"adzvcxv","fields_type":"1","fields_range":" "}]},{"name":"测试自动生成数据","path":"/autoData","method":"get","response":[{"fields_name":"id","fields_type":"id","fields_range":""},{"fields_name":"name","fields_type":"name","fields_range":""},{"fields_name":"gender","fields_type":"gender","fields_range":""}]},{"name":"asdf","path":"/fdzfavzdgdg","method":"get","response":[{"fields_name":"id","fields_type":"id","fields_range":""},{"fields_name":"name","fields_type":"name","fields_range":""},{"fields_name":"gender","fields_type":"gender","fields_range":""},{"fields_name":"address","fields_type":"address","fields_range":""},{"fields_name":"inhospital","fields_type":"date","fields_range":""},{"fields_name":"outhospital","fields_type":"datetime","fields_range":""},{"fields_name":"fee","fields_type":"number","fields_range":"6"},{"fields_name":"department","fields_type":"dictionary","fields_range":"'骨科病房','妇科一病房','耳鼻喉科','儿科'"}]},{"name":"a","path":"/jfdslkndlf","method":"get","response":[{"fields_name":"total","fields_type":"number","fields_range":""},{"fields_name":"id","fields_type":"id","fields_range":""},{"fields_name":"gender","fields_type":"gender","fields_range":""}]},{"name":"fsdfsdfsdfsdf","path":"/ddndsfdfsdfsdfsdfsd","method":"get","response":[{"fields_name":"total","fields_type":"undefined","fields_range":""},{"fields_name":"id","fields_type":"id","fields_range":""},{"fields_name":"name","fields_type":"name","fields_range":""}]},{"name":"获取所有诊断","path":"/getAllDiagnosis","method":"get","response":[{"fields_name":"id","fields_type":"id","fields_range":""},{"fields_name":"name","fields_type":"name","fields_range":""},{"fields_name":"gender","fields_type":"gender","fields_range":""},{"fields_name":"address","fields_type":"address","fields_range":""},{"fields_name":"birthday","fields_type":"date","fields_range":""},{"fields_name":"inhospital","fields_type":"datetime","fields_range":""},{"fields_name":"indepartment","fields_type":"dictionary","fields_range":"妇科一病房,产科二病房,外科手术"}]}]}
+{
+  "apis": [
+    {
+      "name": "ssss",
+      "path": "/nfdksanfdj",
+      "method": "get",
+      "response": [
+        { "fields_name": "id", "fields_type": "1", "fields_range": "1" },
+        { "fields_name": "name", "fields_type": "1", "fields_range": "2" },
+        { "fields_name": "gender", "fields_type": "1", "fields_range": "男,女" }
+      ]
+    },
+    {
+      "name": "asdf",
+      "path": "/api",
+      "method": "get",
+      "response": [
+        { "fields_name": "a", "fields_type": "2", "fields_range": " " },
+        { "fields_name": "dfsdf", "fields_type": "1", "fields_range": " " },
+        { "fields_name": "adzvcxv", "fields_type": "1", "fields_range": " " }
+      ]
+    },
+    {
+      "name": "测试自动生成数据",
+      "path": "/autoData",
+      "method": "get",
+      "response": [
+        { "fields_name": "id", "fields_type": "id", "fields_range": "" },
+        { "fields_name": "name", "fields_type": "name", "fields_range": "" },
+        { "fields_name": "gender", "fields_type": "gender", "fields_range": "" }
+      ]
+    },
+    {
+      "name": "asdf",
+      "path": "/fdzfavzdgdg",
+      "method": "get",
+      "response": [
+        { "fields_name": "id", "fields_type": "id", "fields_range": "" },
+        { "fields_name": "name", "fields_type": "name", "fields_range": "" },
+        {
+          "fields_name": "gender",
+          "fields_type": "gender",
+          "fields_range": ""
+        },
+        {
+          "fields_name": "address",
+          "fields_type": "address",
+          "fields_range": ""
+        },
+        {
+          "fields_name": "inhospital",
+          "fields_type": "date",
+          "fields_range": ""
+        },
+        {
+          "fields_name": "outhospital",
+          "fields_type": "datetime",
+          "fields_range": ""
+        },
+        { "fields_name": "fee", "fields_type": "number", "fields_range": "6" },
+        {
+          "fields_name": "department",
+          "fields_type": "dictionary",
+          "fields_range": "'骨科病房','妇科一病房','耳鼻喉科','儿科'"
+        }
+      ]
+    },
+    {
+      "name": "a",
+      "path": "/jfdslkndlf",
+      "method": "get",
+      "response": [
+        { "fields_name": "total", "fields_type": "number", "fields_range": "" },
+        { "fields_name": "id", "fields_type": "id", "fields_range": "" },
+        { "fields_name": "gender", "fields_type": "gender", "fields_range": "" }
+      ]
+    },
+    {
+      "name": "fsdfsdfsdfsdf",
+      "path": "/ddndsfdfsdfsdfsdfsd",
+      "method": "get",
+      "response": [
+        {
+          "fields_name": "total",
+          "fields_type": "undefined",
+          "fields_range": ""
+        },
+        { "fields_name": "id", "fields_type": "id", "fields_range": "" },
+        { "fields_name": "name", "fields_type": "name", "fields_range": "" }
+      ]
+    },
+    {
+      "name": "获取所有诊断",
+      "path": "/getAllDiagnosis",
+      "method": "get",
+      "response": [
+        { "fields_name": "id", "fields_type": "id", "fields_range": "" },
+        { "fields_name": "name", "fields_type": "name", "fields_range": "" },
+        {
+          "fields_name": "gender",
+          "fields_type": "gender",
+          "fields_range": ""
+        },
+        {
+          "fields_name": "address",
+          "fields_type": "address",
+          "fields_range": ""
+        },
+        {
+          "fields_name": "birthday",
+          "fields_type": "date",
+          "fields_range": ""
+        },
+        {
+          "fields_name": "inhospital",
+          "fields_type": "datetime",
+          "fields_range": ""
+        },
+        {
+          "fields_name": "indepartment",
+          "fields_type": "dictionary",
+          "fields_range": "妇科一病房,产科二病房,外科手术"
+        }
+      ]
+    },
+    {
+      "name": "测试民族颜色小数",
+      "path": "/nationtest",
+      "method": "get",
+      "response": [
+        { "fields_name": "hex", "fields_type": "colorhex", "fields_range": "" },
+        { "fields_name": "rgb", "fields_type": "colorrgb", "fields_range": "" },
+        {
+          "fields_name": "nation",
+          "fields_type": "nation",
+          "fields_range": ""
+        },
+        { "fields_name": "float", "fields_type": "float", "fields_range": "" }
+      ]
+    }
+  ]
+}
