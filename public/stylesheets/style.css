@@ -2,10 +2,11 @@
   margin: 0;
   padding: 0;
 }
+
 body {
+  font: 500 14px 'Cascadia Code', 'Lucida Grande', Helvetica, Arial, sans-serif;
   color: #2c2c2c;
-  font: 500 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
-  text-align: center;
+  width: 1024px;
 }
 
 .page {

@@ -25,9 +25,9 @@ router.get('/apis', async (ctx) => {
 // if the api path is existing, return code 201: ...already exist.
 router.post('/api', async (ctx) => {
   if (
-    ctx.request.body.api_path &&
-    ctx.request.body.api_method &&
-    ctx.request.body.api_name
+    ctx.request.body.api_path && // must have a api path
+    ctx.request.body.api_method && // must have a api method
+    ctx.request.body.api_name // must have a api name
   ) {
     let current = fs.readFileSync('stores/apis.json', 'utf8'),
       file = JSON.parse(current)
@@ -50,6 +50,7 @@ router.post('/api', async (ctx) => {
         fields_name: fields,
         fields_type: ctx.request.body.fields_type[idx],
         fields_range: ctx.request.body.fields_range[idx].trim(),
+        fields_layer: ctx.request.body.fields_layer[idx],
       })
     })
 
@@ -63,7 +64,7 @@ router.post('/api', async (ctx) => {
     let apis_string = JSON.stringify(file)
     let buffer = Buffer.from(apis_string)
     fs.writeFileSync('stores/apis.json', buffer)
-    ctx.redirect('/mock/api')
+    ctx.redirect('/mock/apis')
   } else {
     ctx.body = {
       code: 400,

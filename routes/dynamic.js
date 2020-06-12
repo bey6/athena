@@ -8,27 +8,33 @@ const file = fs.readFileSync('stores/apis.json', 'utf8'),
 apis.forEach((api) => {
   router[api.method](`${api.path}`, async (ctx) => {
     let res = {},
+      data = {
+        list: {},
+      },
+      target = 'list',
       list = {}
 
     api.response.forEach((fields) => {
+      target = fields.fields_layer === 'root' ? data : list
       switch (fields.fields_type) {
         case 'id':
-          list[fields.fields_name] = () => Mock.mock('@id')
+          target[fields.fields_name] = () => Mock.mock('@id')
+          break
 
         case 'name':
-          list[fields.fields_name] = () => Mock.mock('@cname')
+          target[fields.fields_name] = () => Mock.mock('@cname')
           break
 
         case 'gender':
-          list[`${fields.fields_name}|1`] = ['男', '女']
+          target[`${fields.fields_name}|1`] = ['男', '女']
           break
 
         case 'address':
-          list[fields.fields_name] = () => Mock.mock('@county(true)')
+          target[fields.fields_name] = () => Mock.mock('@county(true)')
           break
 
         case 'nation':
-          list[`${fields.fields_name}|1`] = [
+          target[`${fields.fields_name}|1`] = [
             '汉族',
             '满族',
             '蒙古族',
@@ -89,49 +95,48 @@ apis.forEach((api) => {
           break
 
         case 'date':
-          list[fields.fields_name] = () => Mock.mock('@date')
+          target[fields.fields_name] = () => Mock.mock('@date')
           break
 
         case 'datetime':
-          list[fields.fields_name] = () => Mock.mock('@datetime')
+          target[fields.fields_name] = () => Mock.mock('@datetime')
           break
 
         case 'colorhex':
-          list[fields.fields_name] = () => Mock.mock('@hex')
+          target[fields.fields_name] = () => Mock.mock('@hex')
           break
 
         case 'colorrgb':
-          list[fields.fields_name] = () => Mock.mock('@rgb')
+          target[fields.fields_name] = () => Mock.mock('@rgb')
           break
 
         case 'number':
-          list[fields.fields_name] = () => Mock.mock(/\d{5}/)
+          target[fields.fields_name] = () => Mock.mock(/\d{5}/)
           break
 
         case 'float':
-          list[fields.fields_name] = () => Mock.mock('@float(60, 100)')
+          target[fields.fields_name] = () => Mock.mock('@float(60, 100)')
           break
 
         case 'dictionary':
-          list[`${fields.fields_name}|1`] = fields.fields_range
+          target[`${fields.fields_name}|1`] = fields.fields_range
             ? fields.fields_range.split(',')
             : []
           break
 
         default:
-          list[fields.fields_name] = fields.fields_range || 'no value'
+          target[fields.fields_name] = fields.fields_range || 'no value'
           break
       }
     })
 
+    data['list|10-200'] = [list]
     res = Mock.mock({
       code: 200,
-      msg: `🦄 Generate by athena mock api.`,
-      data: {
-        total: 0,
-        'list|10-200': [list],
-      },
+      msg: `🌈 Generate by athena mock api.`,
+      data,
     })
+    res.data.total = res.data.list.length
     ctx.body = res
   })
 })

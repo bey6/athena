@@ -28,13 +28,16 @@ function handleAdd(e) {
   <div class="text-align-center">
     <button onclick="handleRemove();return false;">❌</button>
   </div>
-  <div>
-    <input type="checkbox" value="false" name="fields_inlist"/>
+  <div class="flex flex-4 text-align--center">
+    <select class="flex-1" name="fields_layer">
+      <option value="root">root</option>
+      <option value="list">list</option>
+    </select>
   </div>
-  <div class="flex flex-3 text-align--center">
+  <div class="flex flex-4 text-align--center">
     <input class="flex-1" type="text" name="fields_name" autocomplete="off" spellcheck="false" required/>
   </div>
-  <div class="flex flex-3 text-align--center">
+  <div class="flex flex-4 text-align--center">
     <select class="flex-1" name="fields_type">
       <option value="undefined">无值</option>
       <option value="id">id</option>
@@ -51,7 +54,7 @@ function handleAdd(e) {
       <option value="dictionary">字典</option>
     </select>
   </div>
-  <div class="flex flex-3 text-align--center">
+  <div class="flex flex-4 text-align--center">
     <input class="flex-1" type="text" name="fields_range" autocomplete="off" spellcheck="false" 
            onchange="handleRangeChange" value=" "/>
   </div>
