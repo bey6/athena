@@ -7,7 +7,7 @@ router.get('/', async (ctx, next) => {
     url = 'http://xhdev.docimaxvip.com:6677'
   }
   await ctx.render('index', {
-    title: 'ATHENA',
+    title: 'An useful service.',
     version: pkg.version,
     url,
   })

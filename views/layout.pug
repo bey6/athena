@@ -1,8 +1,43 @@
 doctype html
 html
   head
-    title= title
+    title="ATHENA"
     link(rel="stylesheet", href="/stylesheets/style.css")
     link(rel="stylesheet", href="http://xhdev.docimaxvip.com:6682/docimax.css")
   body
-    block content
+    header(class="flex")
+      div
+        h1 
+          a(href="/") ATHENA
+      div(class="flex-1 flex")
+        a(href="#mock") MOCK
+        a(href="#gitlab") GITLAB
+        a(href="#proxy") PROXY
+        a(href="#mapping") MAPPING
+        a(href="#dictionary") DICTIONARY
+        
+      div
+        
+    section.page
+      block content
+    footer
+      div
+        a(href="https://github.com/bey6/docimax-filter")
+          img(src="/images/github.png" alt="github")
+      div
+        span 📧 You can also email to me at: #[a(href="mailto:bey.liu@outlook.com") bey.liu@outlook.com]
+      div
+        b dependencies
+      .flex
+        .flex-4
+          a(href="http://xhdev.docimaxvip.com:6617" title="影研科技-首页查询服务")
+            img(src="/images/yykj.png", alt="影研科技 logo", height="64")
+        .flex-4
+          a(href="http://git.docimaxvip.com/help/api/releases/index.md" title="gitlab api")
+            img(src="/images/gitlab.png", alt="gitlab logo")
+        .flex-4
+          a(href="http://mockjs.com/" title="mock.js")
+            img(src="http://mockjs.com/assets/img/logo-2.svg", alt="mock.js logo", width="64")
+        .flex-4
+          a(href="https://koa.bootcss.com/" title="koa")
+            img(src="https://koa.bootcss.com/public/images/koa-logo.png", alt="koa logo", height="64")

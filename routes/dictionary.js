@@ -1,36 +1,115 @@
 const router = require('koa-router')()
 const fetch = require('node-fetch')
 const BaseResponse = require('../classes/BaseResponse')
+const sql = require('../service/mssql.js')
 
 router.prefix('/dictionary')
+
+router.get('/district', async (ctx) => {
+  let res = new BaseResponse()
+  try {
+    res.data.list = [
+      { id: 0, label: '东院', value: 'e' },
+      { id: 1, label: '西院', value: 'w' },
+      { id: 2, label: '东院国疗', value: 'ie' },
+      { id: 3, label: '西院国疗', value: 'iw' },
+    ]
+  } catch (error) {
+    res.code = error.code
+    res.msg = error.message
+  } finally {
+    ctx.body = res
+  }
+})
 
 // 获取科室部门
 router.get('/department', async (ctx) => {
   let res = new BaseResponse(),
-    url = encodeURI(
-      'http://xhdev.docimaxvip.com:6617/api/values/GetValue?dicColumn=入院科别'
-    ),
     pickName = function (label) {
-      if (label && label.split('-')) {
+      if (label && label.split('-').length > 1) {
         return label.split('-')[1]
       }
       return label
     }
 
   try {
-    const json = await (await fetch(url)).json()
-    res.data.list = json.map((d, idx) => ({
-      id: idx,
-      label: pickName(d.n),
-      value: d.c,
-      acronym: d.p,
+    let result = await sql.getDepartment(ctx.query.deleted)
+
+    let list = result.recordset.map((d) => ({
+      ...d,
+      id: d.id.trim(),
+      label: pickName(d.label),
     }))
+
+    // 过滤类型
+    if (ctx.query.type) {
+      switch (ctx.query.type) {
+        case 'e': // 科室
+        case 'w': // 病房
+        case 'd': // 药房
+        case 'em': // 急诊
+          console.log('into')
+          list = list.filter((d) => d.type === ctx.query.type.toUpperCase())
+          break
+        default:
+          break
+      }
+    }
+
+    list = list.map((d) => ({
+      id: d.id.trim(),
+      label: pickName(d.label),
+      value: d.value,
+      acronym: d.acronym,
+    }))
+
+    // 过滤院区
+    if (ctx.query.district) {
+      switch (ctx.query.district) {
+        case 'w':
+          res.data.list = list.filter(
+            (d) => d.label.includes('(西院)') || d.label.includes('（西院）')
+          )
+          break
+        case 'e':
+          res.data.list = list.filter(
+            (d) =>
+              !d.label.includes('(西院)') &&
+              !d.label.includes('（西院）') &&
+              !d.label.includes('(西院国际医疗)') &&
+              !d.label.includes('（西院国际医疗）') &&
+              !d.label.includes('国际医疗')
+          )
+          break
+        case 'iw':
+          res.data.list = list.filter(
+            (d) =>
+              d.label.includes('(西院国际医疗)') ||
+              d.label.includes('（西院国际医疗）')
+          )
+          break
+        case 'ie':
+          res.data.list = list.filter(
+            (d) =>
+              !d.label.includes('（西院国际医疗）') &&
+              !d.label.includes('(西院国际医疗)') &&
+              d.label.includes('国际医疗')
+          )
+          break
+        default:
+          res.data.list = list
+          break
+      }
+    } else {
+      res.data.list = list
+    }
     res.data.total = res.data.list.length
   } catch (error) {
     res.code = error.code
     res.msg = error.message
+  } finally {
+    ctx.body = res
   }
-  ctx.body = res
 })
 
 // 获取用户

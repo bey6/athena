@@ -2,7 +2,11 @@ extends ../layout
 
 block content
     h1 Already exists APIs
-    ul
+    dl
+        dt 获取鉴定列表[get]
+        dd 
+            a(href=url+"/emrms/interpretable" target="view_api") #{url}/emrms/interpretable
         each api in apis
-            li
-                a(href=api.path) #{api.name} #{api.path} [#{api.method}]
+            dt #{api.name}[#{api.method}]
+            dd
+                a(href=api.path) #{api.path}

@@ -5,8 +5,10 @@ block content
 
     form(action="/mock/api" method="post")
         h3 API 基本信息描述
+        hr
+        br
         div(class="flex mgb-3")
-            div(class="flex-2 flex")
+            div(class="flex-2 flex mgr-2")
                 label(for="api_name") 接口名称：
                 input(class="flex-1" type="text" id="api_name" name="api_name" autocomplete="off" spellcheck="false" required)
             div(class="flex-2 flex")
@@ -16,7 +18,7 @@ block content
                     option(value="post") POST
 
         .flex
-            div(class="flex-2 flex")
+            div(class="flex-2 flex mgr-2")
                 label(for="api_path") PATH：
                 input(class="flex-1" type="text" id="api_path" name="api_path" placeholder="/api"
                       autocomplete="off" spellcheck="false" required)
@@ -32,6 +34,10 @@ block content
                 div(class="flex-4 text-align--center") 名称
                 div(class="flex-4 text-align--center") 类型
                 div(class="flex-4 text-align--center") 取值
+            hr
+            br
+        hr
+        br
 
         button(class="mgr-3" onclick="handleAdd(this);return false;") 🌈 添加一个返回字段
         button(class="mgb-3") 🚀 提 交
