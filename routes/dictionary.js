@@ -77,9 +77,16 @@ router.get('/department', async (ctx) => {
           )
           break
         case '2':
-          res.data.list = list.filter(
-            (d) => d.label.includes('(西院)') || d.label.includes('（西院）')
-          )
+          res.data.list = list
+            .filter(
+              (d) => d.label.includes('(西院)') || d.label.includes('（西院）')
+            )
+            .map((d) => ({
+              ...d,
+              label: d.label
+                .replace(/（西院）\d{0,}/, '')
+                .replace(/\(西院\)\d{0,}/, ''),
+            }))
           break
         case '3':
           res.data.list = list.filter(
@@ -90,11 +97,18 @@ router.get('/department', async (ctx) => {
           )
           break
         case '4':
-          res.data.list = list.filter(
-            (d) =>
-              d.label.includes('(西院国际医疗)') ||
-              d.label.includes('（西院国际医疗）')
-          )
+          res.data.list = list
+            .filter(
+              (d) =>
+                d.label.includes('(西院国际医疗)') ||
+                d.label.includes('（西院国际医疗）')
+            )
+            .map((d) => ({
+              ...d,
+              label: d.label
+                .replace(/（西院国际医疗）\d{0,}/, '')
+                .replace(/\(西院国际医疗\)\d{0,}/, ''),
+            }))
           break
         default:
           res.data.list = list
