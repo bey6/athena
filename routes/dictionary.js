@@ -9,10 +9,10 @@ router.get('/district', async (ctx) => {
   let res = new BaseResponse()
   try {
     res.data.list = [
-      { id: 0, label: '东院', value: 'e' },
-      { id: 1, label: '西院', value: 'w' },
-      { id: 2, label: '东院国疗', value: 'ie' },
-      { id: 3, label: '西院国疗', value: 'iw' },
+      { id: 0, label: '协和东院', value: '1' },
+      { id: 1, label: '协和西院', value: '2' },
+      { id: 2, label: '东院国疗', value: '3' },
+      { id: 3, label: '西院国疗', value: '4' },
     ]
   } catch (error) {
     res.code = error.code
@@ -66,12 +66,7 @@ router.get('/department', async (ctx) => {
     // 过滤院区
     if (ctx.query.district) {
       switch (ctx.query.district) {
-        case 'w':
-          res.data.list = list.filter(
-            (d) => d.label.includes('(西院)') || d.label.includes('（西院）')
-          )
-          break
-        case 'e':
+        case '1':
           res.data.list = list.filter(
             (d) =>
               !d.label.includes('(西院)') &&
@@ -81,19 +76,24 @@ router.get('/department', async (ctx) => {
               !d.label.includes('国际医疗')
           )
           break
-        case 'iw':
+        case '2':
           res.data.list = list.filter(
-            (d) =>
-              d.label.includes('(西院国际医疗)') ||
-              d.label.includes('（西院国际医疗）')
+            (d) => d.label.includes('(西院)') || d.label.includes('（西院）')
           )
           break
-        case 'ie':
+        case '3':
           res.data.list = list.filter(
             (d) =>
               !d.label.includes('（西院国际医疗）') &&
               !d.label.includes('(西院国际医疗)') &&
               d.label.includes('国际医疗')
+          )
+          break
+        case '4':
+          res.data.list = list.filter(
+            (d) =>
+              d.label.includes('(西院国际医疗)') ||
+              d.label.includes('（西院国际医疗）')
           )
           break
         default:
