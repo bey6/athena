@@ -13,6 +13,7 @@ const dictionary = require('./routes/dictionary')
 const mock = require('./routes/mock')
 const dynamic = require('./routes/dynamic')
 const gitlab = require('./routes/gitlab')
+const redis = require('./routes/redis')
 
 // error handler
 onerror(app)
@@ -48,6 +49,7 @@ app.use(dictionary.routes(), dictionary.allowedMethods())
 app.use(mock.routes(), mock.allowedMethods())
 app.use(dynamic.routes(), dynamic.allowedMethods())
 app.use(gitlab.routes(), gitlab.allowedMethods())
+app.use(redis.routes(), redis.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

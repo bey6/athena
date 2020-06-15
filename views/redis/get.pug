@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+    h1 GET CACHED VALUE BY KEY
+    form(class="mgt-3 mgb-3" action="/redis/get", method="get")
+        div(class="flex mgb-3")
+            .flex-3
+                label(for="key") key:
+                input(type="text" id="key" name="key" value=key)
+        div
+            button 🍬 GET !
+    
+    div(class="code") #{cachedValue}

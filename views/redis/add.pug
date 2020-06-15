@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+    h1 ADD A NEW CACHE
+    form(class="mgt-3" action="/redis/add", method="post")
+        div(class="flex mgb-3")
+            .flex-3
+                label(for="key") key:
+                input(type="text" id="key" name="key")
+            .flex-3
+                label(for="value") value:
+                input(type="text" id="value" name="value")
+            .flex-3
+                label(for="desc") description:
+                input(type="text" id="desc" name="desc")
+        div
+            button 🍡 CACHE IT !
