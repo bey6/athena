@@ -28,6 +28,10 @@ npx eslint --init
 
 #### .eslintrc.js
 
+```bash
+yarn add babel-eslint --dev
+```
+
 ```js
 module.exports = {
   root: true,
@@ -56,7 +60,7 @@ module.exports = {
 ### Prettier
 
 ```bash
-yar add eslint-plugin-prettier
+yarn add eslint-plugin-prettier --dev
 # or
 npm i -D eslint-plugin-prettier
 ```
