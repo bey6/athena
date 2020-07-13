@@ -1,5 +1,22 @@
 # ESLint + Prettier
 
+## ESLint 与 Prettier 的差异
+
+- ESLint 检查代码质量（变量未声明、变量无人引用、return 之后不该有代码，等）
+- Prettier 检查代码规范（换行、单/双引号、空格，等）
+
+## Prettier
+
+```bash
+# 1. 安装 prettier cli
+yarn add prettier --dev --exact
+# or
+npm install --save-dev --save-exact prettier
+
+# 2. 安装 prettier vscode 插件
+ext install esbenp.prettier-vscode
+```
+
 ## 已有项目的集成
 
 ### ESLint
@@ -169,6 +186,12 @@ pre-commit hook failed...
 ```
 
 总之无法提交代码。
+
+## vscode settings
+
+此外，vscode 也有自己的 settings 可以配置例如，每行字符数，保存后执行格式化，等。
+
+具体可以参考 [vscode.settings.md](./vscode.settings.md)
 
 ## 🍓 小结
 
